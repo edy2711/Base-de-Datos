@@ -9,4 +9,4 @@ Los temas que se encuentran en  el repositorio son:
 3. Construccion de Base de Datos.
 4. Lenguaje estructurado de consulta.
 
-![Logo Base de Datos].\img\cyberpunk-2077-hoja-de-ruta-cancelacion-multijugador.jpg
+![Logo Base de Datos](./img/cyberpunk-2077-hoja-de-ruta-cancelacion-multijugador.jpg)
