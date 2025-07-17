@@ -1,5 +1,3 @@
-# 📘 Diccionario de Datos – Plantilla General
-
 **Tabla Cliente**
 
 | Campo           | Tipo de Dato | Tamaño | PK  | FK  | Nulo | Único | Restricciones / CHECK                      | Referencia a                    | Descripción                             |
@@ -31,3 +29,4 @@
 | `anio`         | INT           | -     | ❌  | ❌  | ❌   | ❌          | -                                       | -                                | Anio del vehiculo                        | -
 | `NumCliente`   | INT           | -     | ❌  | ✅  | ❌   | ❌          | -                                       | Cliente(NumCliente)                                | El cliente que renta el vehiculo 
 | `NumSucursal`  | INT           | -     | ❌  | ✅  | ❌   | ❌          | -                                       | Sucursal(NumSucursal)                              | La sucursal donde se encuentra el vehiculo 
+

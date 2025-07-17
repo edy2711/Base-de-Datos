@@ -188,7 +188,63 @@ CONSTRAINT pk_department
 PRIMARY KEY (id),
 CONSTRAINT fk_department_employee
 FOREIGN KEY (employeeid)
-REFERENCES employee(id),
+REFERENCES employee(id),s
 CONSTRAINT unique_employeeid
 UNIQUE(employeeid)
 );
+--TAREA
+-- Creación de la tabla Categoria
+CREATE TABLE Categoriat (
+    CategoriaIdt INT NOT NULL IDENTITY(1,1),
+    NombreCategoriat NVARCHAR(50) NOT NULL,
+    CONSTRAINT pk_Categoriat PRIMARY KEY (CategoriaIdt)
+);
+GO
+
+-- Creación de la tabla Productos
+CREATE TABLE Productost (
+    ProductoIdt INT NOT NULL IDENTITY(1,1),
+    NombreProductot NVARCHAR(100) NOT NULL,
+    Existenciat INT NOT NULL,
+    PrecioUnitariot DECIMAL(10,2) NOT NULL,
+    CategoriaIdt INT NOT NULL,
+    CONSTRAINT pk_Productost PRIMARY KEY (ProductoIdt),
+    CONSTRAINT fk_Productos_Categoriat FOREIGN KEY (CategoriaIdt) 
+        REFERENCES Categoriat(CategoriaIdt)
+);
+GO
+
+-- Creación de la tabla Cliente
+CREATE TABLE Clientet (
+    IdClientet INT NOT NULL IDENTITY(1,1),
+    NombreClientet NVARCHAR(100) NOT NULL,
+    RFCt NVARCHAR(20) NOT NULL,
+    Direcciont NVARCHAR(200) NOT NULL,
+    CONSTRAINT pk_Clientet PRIMARY KEY (IdClientet)
+);
+GO
+
+-- Creación de la tabla Pedido
+CREATE TABLE Pedidot (
+    PedidoIdt INT NOT NULL IDENTITY(1,1),
+    Fechat DATETIME NOT NULL DEFAULT GETDATE(),
+    IdClientet INT NOT NULL,
+    CONSTRAINT pk_Pedidot PRIMARY KEY (PedidoIdt),
+    CONSTRAINT fk_Pedido_Clientet FOREIGN KEY (IdClientet) 
+        REFERENCES Clientet(IdClientet)
+);
+GO
+
+-- Creación de la tabla DetallePedido
+CREATE TABLE DetallePedidot (
+    PedidoIdt INT NOT NULL,
+    ProductoIdt INT NOT NULL,
+    PrecioVentat DECIMAL(10,2) NOT NULL,
+    CantidadVendidat INT NOT NULL,
+    CONSTRAINT pk_DetallePedidot PRIMARY KEY (PedidoIdt, ProductoIdt),
+    CONSTRAINT fk_DetallePedido_Pedidot FOREIGN KEY (PedidoIdt) 
+        REFERENCES Pedidot(PedidoIdt),
+    CONSTRAINT fk_DetallePedido_Productost FOREIGN KEY (ProductoIdt) 
+        REFERENCES Productost(ProductoIdt)
+);
+GO
