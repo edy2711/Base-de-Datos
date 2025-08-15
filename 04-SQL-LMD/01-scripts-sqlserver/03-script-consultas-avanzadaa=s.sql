@@ -107,3 +107,15 @@ ON rep.Num_Empl = p.Rep
 Inner Join Clientes AS c
 ON c.Rep_Cli=rep.Num_Empl
 WHERE p.Importe>25000;
+
+
+SELECT p.Importe,
+p.Num_Pedido AS [Numero de Pedido],
+c.Empresa AS [Cliente],
+r.Nombre AS [Representante Cliente]
+FROM Representantes AS r
+INNER JOIN Clientes AS c
+ON r.Num_Empl = c.Rep_Cli
+INNER JOIN Pedidos AS p
+ on c.Num_Cli= p.Cliente
+ WHERE p.Importe>25000;
